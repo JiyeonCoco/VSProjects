@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script type="text/javascript" src="javascripts/main.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fengyuanchen.github.io/cropperjs/css/cropper.css">
+    <script src="https://fengyuanchen.github.io/cropper/js/cropper.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="img_upload">
+            <!-- upload text part -->
+            <p class="img_upload-text">
+                TEST 이미지
+                <span class="img_upload-warning"> ※ *.png / *.jpg (이미지파일)로 업로드해주세요 ※ </span>
+            </p>
+            <!-- upload image part -->
+            <div class="upload_btn">
+                <input type="text" class="upload_txt" value="Please upload an image." placeholder="Please upload an image." disabled>
+                <div class="upload">
+                    <input type="file" id="select_file" name="select_file" accept="image/jpeg, image/png, image/jpg" capture="camera">
+                    <label for="select_file"> Select File </label> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="before_thumbnail">
+            <div class="before_img_box">
+                <img id="before_img">
+            </div>
+
+            <input type="submit">
+            <label for="crop_btn" id="crop_btn"> Crop </label>
+            <input type="submit">
+            <label for="trans_btn" id="trans_btn"> 🌟 SUPERNOVA GO 🌟 </label>
+        </div>
+
+        <div class="after_thumbnail">
+            <div class="after_img_box">
+                <img id="after_img">
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
