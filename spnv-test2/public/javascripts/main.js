@@ -1,4 +1,25 @@
-$(function(){    
+$(function(){   
+
+    var i = 0;
+    function move() {
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            var id = setInterval(frame, 120);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                    $('#trans_btn').css('background-color', '#FF7A00');
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+    }
+
     var cropper;
 
     // Select File 버튼 클릭 시
@@ -13,12 +34,9 @@ $(function(){
 
             var reader = new FileReader();
             $('.upload_txt')[0].value = file_name;
-            // var file = event.target.files[0];
-            // reader.readAsDataURL(file);
-            
+
             reader.onload = () => {
                 image.attr("src", reader.result);
-                // image.attr("src", event.target.result);
 
                 cropper = image.cropper( {
                     dragMode: 'crop',
@@ -61,24 +79,29 @@ $(function(){
             $('#before_img').attr('src', canvas.toDataURL("image/png"));
             $('#crop_btn').css('display', 'none');
             $('#trans_btn').css('display', 'block');
+            $('#char_txt').css('display', 'block');
+            $('#char_img').css('display', 'block');
+            $('#myProgress').css('display', 'block');
+            move();
+
 
             canvas.toBlob(function(blob) {
 
                 var URL = window.URL || window.webkitURL;
                 var link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);;
+                link.href = URL.createObjectURL(blob);
                 link.download =  file_name;
                 link.click();
 
                 $.ajax({
                     url: '/',
                     type: 'POST',
-                    data: {'fileName' : file_name},
-                    success: function () {
-                        alert('업로드 성공');
+                    data: {'fileName': file_name},
+                    success: function (result) {
+                        console.log('업로드 성공');
                     },
                     error: function () {
-                        alert('업로드 실패');
+                        console.log('업로드 실패');
                     },
                 });
             })
@@ -87,9 +110,10 @@ $(function(){
 
     // 변환하기 버튼 클릭 시
     $('#trans_btn').on('click', function() {
-        var image = $('#after_img');
-        var file_name = $('.upload_txt').val().split('\\').reverse()[0];
-        file_name = '/images/' + file_name.slice(0, file_name.length - 4) + '_SR.png';
+        $('#char_txt').css('display', 'none');
+        $('#char_img').css('display', 'none');
+        $('#myProgress').css('display', 'none');
+        file_name = '/images/output.png';
         $('#after_img').attr('src', file_name);
     });
 });

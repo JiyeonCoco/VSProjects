@@ -10,6 +10,7 @@
     <script src="https://fengyuanchen.github.io/cropper/js/cropper.js"></script>
 </head>
 
+
 <body>
 
     <div class="container">
@@ -38,13 +39,20 @@
             <input type="submit">
             <label for="crop_btn" id="crop_btn"> Crop </label>
             <input type="submit">
-            <label for="trans_btn" id="trans_btn"> 🌟 SUPERNOVA GO 🌟 </label>
         </div>
 
         <div class="after_thumbnail">
             <div class="after_img_box">
+                <div id="char_txt"> 더 깨끗한 사진으로 만들어줄게! <br> 잠시만 기다려줘 🔍 </div>
+                <img src="/images/adot_char.gif" id="char_img">
+                <div id="myProgress">
+                    <div id="myBar"></div>
+                </div>
                 <img id="after_img">
             </div>
+            <button type="button" id="trans_btn"> 
+                <img src="/images/spnv_logo.png" id="logo_img">
+            </button>
         </div>
 
     </div>

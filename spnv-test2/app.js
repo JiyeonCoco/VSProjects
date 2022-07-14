@@ -21,7 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
-app.use(function(req,res,next){setTimeout(next,5000)});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

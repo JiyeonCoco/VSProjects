@@ -21,6 +21,7 @@ a {
   border: solid 0.1px lightgray;
   border-radius: 5px;
   padding: 11px 20px;
+  width: 150px;
 }
 .upload {
   margin-top: 12px;
@@ -52,12 +53,62 @@ label {
   margin-bottom: 25px;
   background-color: white;
 }
+.after_img_box {
+  position: relative;
+}
+#char_txt {
+  display: none;
+  position: absolute;
+  top: 10%;
+  left: 13%;
+  font-size: 21px;
+  text-align: center;
+}
+#char_img {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  z-index: 2;
+}
+#myProgress {
+  display: none;
+  width: 100%;
+  background-color: grey;
+}
+#myBar {
+  position: absolute;
+  top: 96.4%;
+  height: 18px;
+  background-color: #323A85;
+}
+.ldBar path.mainline {
+  stroke-width: 10;
+  stroke: #09f;
+  stroke-linecap: round;
+}
+.ldBar path.baseline {
+  stroke-width: 14;
+  stroke: #f1f2f3;
+  stroke-linecap: round;
+  filter:url(#custom-shadow);
+}
 #crop_btn {
   display: none;
 }
 #trans_btn {
-  background-color: #FF7A00;
+  background-color: gray;
   display: none;
+  width: 100%;
+  height: 35px;
+  border: 0px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#logo_img {
+  width: 41%;
+  height: 49%;
+  padding-top: 2px;
 }
 
 input[type="file"], input[type="submit"] {

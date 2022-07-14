@@ -1,5 +1,10 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
+var path = require('path');
+var mime = require('mime');
+router.use(express.json({limit: '50mb'}));
+router.use(express.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res) {
 
   console.log(req.body.fileName);
-  res.send({'fileName': req.body.fileName});
+  res.end();
 
   const spawn = require('child_process').spawn;
   const result = spawn('python', ['test.py', req.body.fileName]);
